@@ -13,6 +13,8 @@ class Subject:
     code: str
     scale: Optional[str]
     units: str 
+    description: str 
+    notes: str
 
 @strawberry.type 
 class YearlyData:

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { ICountriesInfo, IFieldsState, ISubjectsInfo } from "../types"
+import React from "react"
+import { IFieldsState } from "../types"
 import { ApolloError, gql, useQuery } from "@apollo/client"
 
 export const AppContext = React.createContext<{
@@ -26,7 +26,7 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
   const { loading, error, data: fieldsState } = useQuery<IFieldsState>(GET_COUNTRIES_SUBJECTS, {
     fetchPolicy: 'cache-first'
   });
-  
+  // console.log(fieldsState)
   return (
     <AppContext.Provider value={{ fieldsState, fields: { loading, error } }}>
       {children}
@@ -46,6 +46,8 @@ const GET_COUNTRIES_SUBJECTS = gql`
       name
       scale
       units
+      description
+      notes
     }
   }
 `
