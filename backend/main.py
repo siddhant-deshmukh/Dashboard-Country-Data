@@ -1,31 +1,31 @@
-from flask import Flask, jsonify, request
+from sys import exit
+from os import environ
 from flask_cors import CORS
+from dotenv import load_dotenv
+from flask import Flask, jsonify, request
 
-from strawberry.flask.views import GraphQLView
-from api.Schema.schema import schema
 from api.Models.db import db
+from api.Schema.schema import schema
+from strawberry.flask.views import GraphQLView
 
 app = Flask(__name__)
 
 CORS(app, origins="*")
 
-database = "world-data"
-user = "siddhant"
-password = "password"
-host = "localhost"
-port = "5432"
+load_dotenv("../.env")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{user}:{password}@{host}:{port}/{database}"
+postgresql_url = environ.get("POSTGRES_CONNECT_URL")
+if postgresql_url is None:
+    print("No variable named POSTGRES_CONNECT_URL found in .env file")
+    exit()
+
+app.config["SQLALCHEMY_DATABASE_URI"] = environ.get("POSTGRES_CONNECT_URL") #f"postgresql://{user}:{password}@{host}:{port}/{database}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 app.add_url_rule(
     "/graphql",
-    view_func=GraphQLView.as_view("graphql_view", schema=schema), #, graphiql=False
+    view_func=GraphQLView.as_view("graphql_view", schema=schema, graphiql=False), #, graphiql=False
 )
-#app.add_url_rule(
-#    "/g",
-#    view_func=GraphQLView.as_view("graphql_view", schema=schema),
-#)
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_world():
