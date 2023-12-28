@@ -3,6 +3,7 @@ from sqlalchemy import text
 
 from api.Models.db import db
 from api.Models.World_data import World_data, subject_code_names
+from api.Models.Subjects_data import Subjects_data
 from api.Schema.types import Country, DataRow, YearlyData, Subject
 from api.Schema.inputs import InputGetDataForCountry, InputGetDataForSubCountry
 
@@ -16,13 +17,16 @@ def get_all_countries():
     return res
 
 def get_all_subjects():
-    query_ = World_data.query.distinct().with_entities(World_data.subject_code, World_data.scale, World_data.units)
+    query_ = Subjects_data.query.with_entities(Subjects_data.subject_code, Subjects_data.description, Subjects_data.notes, Subjects_data.scale, Subjects_data.units)
+    # query_ = World_data.query.distinct().with_entities(World_data.subject_code, World_data.scale, World_data.units)
     subjects = query_.all()
     res  = []
     
     for row in subjects:
-        subject_code, scale, units = row.tuple()
-        res.append(Subject(code=subject_code, scale=scale, units=units, name=subject_code_names[subject_code]))
+        print(row.tuple())
+        print()
+        subject_code, description, notes, scale, units = row.tuple()
+        res.append(Subject(code=subject_code, scale=scale, units=units, name=subject_code_names[subject_code], description=description, notes=notes))
     return res
 
 def get_data_for_subject_country(fields: InputGetDataForSubCountry):

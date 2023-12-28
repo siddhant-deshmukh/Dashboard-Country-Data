@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+  .nav-content > ul {
+    @apply flex flex-col px-1 sm:px-3
+  }
+  .nav-content > ul div {
+    @apply border-t-2 border-t-light-secondary-3 flex flex-col space-y-2  py-3
+  }
+  .nav-content > ul h4 {
+    @apply text-sm pl-3 text-dark-secondary-2 font-medium
+  }
+  .nav-content > ul ul {
+    @apply flex flex-col
+  }
+  .nav-content > ul ul > button {
+    @apply hover:bg-light-secondary-3 hover:cursor-pointer text-left px-4 py-1 font-bold text-dark-secondary-0 rounded-full flex space-x-3 items-center
+  }
+  .nav-content > ul ul > button > span {
+    @apply text-sm laptop:text-base
+  }
+}

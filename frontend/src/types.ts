@@ -8,6 +8,8 @@ export type ISubjectsInfo = {
   code: string
   scale?: string
   units: string
+  description: string
+  notes: string
 }
 export interface IFieldsState {
   // countries?: {
