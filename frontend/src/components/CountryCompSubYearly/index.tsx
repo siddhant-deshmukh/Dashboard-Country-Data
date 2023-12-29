@@ -83,19 +83,19 @@ export default function CountryCompSubYearlyList() {
   // console.log("Selected", selected)
   return (
     <div className='flex flex-col my-2'>
-      <div className='flex px-0 sm:px-2 flex-col my-3'>
-        <h2 className='font-bold text-2xl sm:text-3xl laptop:text-4xl text-dark-secondary-0'>Country's Yearly Comparison</h2>
-        <div className='px-0 sm:px-2'>
-          <h4 className='font-semibold text-sm sm:text-base laptop:text-lg text-dark-secondary-1 my-1.5'>Here you can compare yearly data of different countries in plot manner.</h4>
-          <p className='text-sm laptop:text-base text-dark-secondary-2 my-3'>
+      <div className='flex px-0 sm:px-1 flex-col my-3'>
+        <h2 className='font-bold text-2xl sm:text-3xl laptop:text-4xl text-main-secondary-0'>Country's Yearly Comparison</h2>
+        <div className='px-0 sm:px-1'>
+          <h4 className='font-semibold text-sm sm:text-base laptop:text-lg text-main-secondary-1 my-1.5'>Here you can compare yearly data of different countries in plot manner.</h4>
+          <p className='text-sm laptop:text-base text-main-secondary-2 my-3'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt vero vitae molestias? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe molestiae natus ad tempore amet! Natus laboriosam numquam esse nisi voluptas!
             <br /><br />
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptate beatae doloremque. Lorem ipsum dolor sit amet consectetur adipisicing.
           </p>
         </div>
       </div>
-      <div className='px-0 sm:px-2 flex flex-col justify-start space-y-2 items-start pt-2 pb-5'>
-        <h3 className='text-lg laptop:text-xl font-bold text-dark-secondary-0'>Select a subject to create new Comparison Graph.</h3>
+      <div className='px-0 sm:px-1 flex flex-col justify-start space-y-2 items-start pt-2 pb-5'>
+        <h3 className='text-lg laptop:text-xl font-bold text-main-secondary-0'>Select a subject to create new Comparison Graph.</h3>
         <div className='flex '>
           <SelectSubject setSelected={setSelected} selected={selected} />
           <button

@@ -68,29 +68,3 @@ export default function ChangeYearly({ years, setYears }: {
     </div>
   )
 }
-
-{/* 
-<div className='flex items-center justify-evenly'>
-  <div>
-    <span>From</span>
-    <input
-      className='text-center py-1 ml-5 border-b-2'
-      onChange={(e) => {
-        setYears((prev) => {
-          return { ...prev, start: Number.parseInt(e.target.value) }
-        })
-      }} type='number' min={2002} defaultValue={2002} max={2025} />
-  </div>
-  <span>-</span>
-  <div>
-    <span>Till</span>
-    <input
-      className='text-center py-1 ml-5 border-b-2'
-      onChange={(e) => {
-        setYears((prev) => {
-          return { ...prev, end: Number.parseInt(e.target.value) }
-        })
-      }} type='number' min={2003} defaultValue={2023} max={2026} />
-  </div>
-</div>      
-*/}

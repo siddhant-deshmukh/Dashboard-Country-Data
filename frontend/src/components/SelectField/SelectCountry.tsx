@@ -67,11 +67,11 @@ export const SelectCountry = ({ selectedCountry, setSelectedCountry }: {
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
         </button>
-        <div className={`${toggle ? 'block' : 'hidden'} bg-base-main absolute z-50 top-14 -left-4 w-56 border shadow-md`}>
+        <div className={`${toggle ? 'block' : 'hidden'} bg-light-secondary-0  absolute z-50 top-14 -left-4 w-56 border shadow-md`}>
           <input 
             value={searchInput}
             onChange={(e)=>{setSearchInput(e.target.value)}}
-            className='sticky top-0 w-40 md:w-48 px-2 py-1.5 mx-4 my-3 bg-base-main text-main border' placeholder='Enter to find' />
+            className='sticky top-0 w-40 md:w-48 px-2 py-1.5 mx-4 my-3 text-main border' placeholder='Enter to find' />
           <div className='max-h-96 relative overflow-y-auto mx-auto max-w-full'>
             <ul className={`flex flex-col`}>
               {
@@ -79,7 +79,7 @@ export const SelectCountry = ({ selectedCountry, setSelectedCountry }: {
                   if(!country){
                     return <li key={index}></li>
                   }
-                  return <li key={country?country.iso:index} className='bg-light-secondary-0  hover:bg-light-secondary-2'>
+                  return <li key={country?country.iso:index} className='hover:bg-light-secondary-2'>
                     <button 
                       className='px-3 py-2 w-full text-left'
                       onClick={()=>{

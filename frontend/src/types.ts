@@ -33,6 +33,8 @@ export interface ICountrySubjectData {
   values: [IYearlyData]
 }
 
+export type TColorThemeOptions = "grey" | "dark-blue" | "light-blue"
+
 export type ICountryCompLinearData = {
   country: ICountriesInfo,
   color?: string,

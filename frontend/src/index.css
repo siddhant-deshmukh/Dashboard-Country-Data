@@ -2,23 +2,271 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-  .nav-content > ul {
+
+body[color-theme="grey"] {
+  --base-main: white;
+  --main: black;
+  --main-1: rgb(3 7 18  );
+  --main-2: rgb(17 24 39);
+  --main-3: rgb(31 41 55);
+  --main-4: rgb(55 65 81);
+  --light-secondary-0: rgb(249 250 251);
+  --light-secondary-1: rgb(243 244 246);
+  --light-secondary-2: rgb(229 231 235);
+  --light-secondary-3: rgb(209 213 219);
+  --dark-secondary-0: rgb(3 7 18  );
+  --dark-secondary-1: rgb(17 24 39);
+  --dark-secondary-2: rgb(31 41 55);
+  --dark-secondary-3: rgb(55 65 81);
+}
+body[color-theme="dark-blue"] {
+  --base-main: black;
+  --main: white;
+  --main-1: rgb(249 250 251);
+  --main-2: rgb(243 244 246);
+  --main-3: rgb(229 231 235);
+  --main-4: rgb(209 213 219);
+  --light-secondary-0: rgb(3 7 18  );
+  --light-secondary-1: rgb(17 24 39);
+  --light-secondary-2: rgb(31 41 55);
+  --light-secondary-3: rgb(55 65 81);
+  --dark-secondary-0: #dbeafe;
+  --dark-secondary-1: #bfdbfe;
+  --dark-secondary-2: #93c5fd;
+  --dark-secondary-3: #60a5fa;
+}
+body[color-theme="light-blue"] {
+  --base-main: white;
+  --main: black;
+  --main-1: rgb(3 7 18  );
+  --main-2: rgb(17 24 39);
+  --main-3: rgb(31 41 55);
+  --main-4: rgb(55 65 81);
+  --light-secondary-0: #eff6ff;
+  --light-secondary-1: #dbeafe;
+  --light-secondary-2: #bfdbfe;
+  --light-secondary-3: #93c5fd;
+  --dark-secondary-0: #0369a1;
+  --dark-secondary-1: #075985;
+  --dark-secondary-2: #0c4a6e;
+  --dark-secondary-3: #082f49;
+}
+
+@layer components {
+  .nav-content>ul {
     @apply flex flex-col px-1 sm:px-3
   }
-  .nav-content > ul div {
-    @apply border-t-2 border-t-light-secondary-3 flex flex-col space-y-2  py-3
+
+  .nav-content>ul div {
+    @apply border-t-2 border-main-3 flex flex-col space-y-2 py-3
   }
-  .nav-content > ul h4 {
-    @apply text-sm pl-3 text-dark-secondary-2 font-medium
+
+  .nav-content>ul h4 {
+    color: var(--dark-secondary-2);
+    @apply text-sm pl-3 font-medium
   }
-  .nav-content > ul ul {
+
+  .nav-content>ul ul {
     @apply flex flex-col
   }
-  .nav-content > ul ul > button {
-    @apply hover:bg-light-secondary-3 hover:cursor-pointer text-left px-4 py-1 font-bold text-dark-secondary-0 rounded-full flex space-x-3 items-center
+
+  .nav-content>ul ul>button {
+    @apply hover:cursor-pointer text-left px-4 py-1 font-bold text-dark-secondary-0 rounded-full flex space-x-3 items-center
   }
-  .nav-content > ul ul > button > span {
+
+  .nav-content>ul ul>button>span {
     @apply text-sm laptop:text-base
   }
 }
+
+.text-base-main {
+  color: var(--base-main);
+}
+
+.text-main {
+  color: var(--main);
+}
+
+.text-main-1 {
+  color: var(--main-1);
+}
+
+.text-main-2 {
+  color: var(--main-2);
+}
+
+.text-main-3 {
+  color: var(--main-3);
+}
+
+.text-main-4 {
+  color: var(--main-4);
+}
+
+.text-light-secondary-0 {
+  color: var(--light-secondary-0);
+}
+
+.text-light-secondary-1 {
+  color: var(--light-secondary-1);
+}
+
+.text-light-secondary-2 {
+  color: var(--light-secondary-2);
+}
+
+.text-light-secondary-3 {
+  color: var(--light-secondary-3);
+}
+
+.text-dark-secondary-0 {
+  color: var(--dark-secondary-0);
+}
+
+.text-dark-secondary-1 {
+  color: var(--dark-secondary-1);
+}
+
+.text-dark-secondary-2 {
+  color: var(--dark-secondary-2);
+}
+
+.text-dark-secondary-3 {
+  color: var(--dark-secondary-3);
+}
+
+.bg-base-main {
+  background-color: var(--base-main);
+}
+
+.bg-main {
+  background-color: var(--main);
+}
+
+.bg-main-1 {
+  background-color: var(--main-1);
+}
+
+.bg-main-2 {
+  background-color: var(--main-2);
+}
+
+.bg-main-3 {
+  background-color: var(--main-3);
+}
+
+.bg-main-4 {
+  background-color: var(--main-4);
+}
+
+.bg-light-secondary-0 {
+  background-color: var(--light-secondary-0);
+}
+
+.bg-light-secondary-1 {
+  background-color: var(--light-secondary-1);
+}
+
+.bg-light-secondary-2 {
+  background-color: var(--light-secondary-2);
+}
+
+.bg-light-secondary-3 {
+  background-color: var(--light-secondary-3);
+}
+
+.bg-dark-secondary-0 {
+  background-color: var(--dark-secondary-0);
+}
+
+.bg-dark-secondary-1 {
+  background-color: var(--dark-secondary-1);
+}
+
+.bg-dark-secondary-2 {
+  background-color: var(--dark-secondary-2);
+}
+
+.bg-dark-secondary-3 {
+  background-color: var(--dark-secondary-3);
+}
+
+.border-base-main {
+  border-color: var(--base-main);
+}
+
+.border-main {
+  border-color: var(--main);
+}
+
+.border-main-1 {
+  border-color: var(--main-1);
+}
+
+.border-main-2 {
+  border-color: var(--main-2);
+}
+
+.border-main-3 {
+  border-color: var(--main-3);
+}
+
+.border-main-4 {
+  border-color: var(--main-4);
+}
+
+.border-light-secondary-0 {
+  border-color: var(--light-secondary-0);
+}
+
+.border-light-secondary-1 {
+  border-color: var(--light-secondary-1);
+}
+
+.border-light-secondary-2 {
+  border-color: var(--light-secondary-2);
+}
+
+.border-light-secondary-3 {
+  border-color: var(--light-secondary-3);
+}
+
+.border-dark-secondary-0 {
+  border-color: var(--dark-secondary-0);
+}
+
+.border-dark-secondary-1 {
+  border-color: var(--dark-secondary-1);
+}
+
+.border-dark-secondary-2 {
+  border-color: var(--dark-secondary-2);
+}
+
+.border-dark-secondary-3 {
+  border-color: var(--dark-secondary-3);
+}
+
+
+/* 
+
+"base-main" : "white",
+
+"main" : "black",
+"main-1" : "rgb(3 7 18  )",
+"main-2" : "rgb(17 24 39)",
+"main-3" : "rgb(31 41 55)",
+"main-4" : "rgb(55 65 81)",
+
+"light-secondary-0" : "rgb(249 250 251)",  //gray-50
+"light-secondary-1" : "rgb(243 244 246)", //gray-100
+"light-secondary-2" : "rgb(229 231 235)", //gray-200
+"light-secondary-3" : "rgb(209 213 219)", //gray-300
+
+"dark-secondary-0" : "rgb(3 7 18  )", //gray-700
+"dark-secondary-1" : "rgb(17 24 39)", //rgb(55 65 81)
+"dark-secondary-2" : "rgb(31 41 55)",
+"dark-secondary-3" : "rgb(55 65 81)",
+
+
+*/
