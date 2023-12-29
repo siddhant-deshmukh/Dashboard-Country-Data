@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 
 import ChangeYearly from './ChangeYearly'
 import ManageCountries from './ManageCountries'
@@ -19,8 +19,8 @@ export function CountryCompSubYearly({ subject, graphWidth: width, deleteSubject
 
   //  (subject)
   return (
-    <div className='relative px-2 sm:px-5 py-5 rounded-lg m-0 sm:m-2 border border-light-secondary-3 shadow-xl shadow-light-secondary-3 w-full max-w-[640px] desktop:max-w-[680px]'>
-      <div className='mt-3 desktop:mt-5'>
+    <div className='relative px-2 sm:px-5 py-5 rounded-lg border border-light-secondary-3 shadow-xl shadow-light-secondary-0 w-full max-w-[640px] desktop:max-w-[680px]'>
+      <div className=''>
         <Heading deleteSubject={deleteSubject} subject={subject} index={index} />
 
         <ManageCountries
@@ -39,7 +39,7 @@ export function CountryCompSubYearly({ subject, graphWidth: width, deleteSubject
                 countriesData={graphData} years={years} startYPoint={minMax.min} endYPoint={minMax.max}
                 width={(width < 394) ? 394 : width} />
             </div>
-            <div className='text-center w-full font-bold py-1 text-text-secondary-8'>Years</div>
+            <div className='text-center w-full font-bold py-1 text-main-1'>Years</div>
           </div>
         }
 
@@ -64,37 +64,36 @@ function Heading({ index, subject, deleteSubject }: {
     <div className='px-2 sm:px-0 text-sm desktop:text-base'>
       <div className='flex justify-between'>
         <div className='flex justify-start items-end space-x-2'>
-          <h1 className='text-left text-xl desktop:text-3xl text-dark-secondary-0 font-semibold'>{subject.name}</h1>
-          <p className='text-dark-secondary-3 font-bold pb-0.5'>({subject.code})</p>
+          <h1 className='text-left text-xl desktop:text-3xl text-main-0 font-semibold'>{subject.name}</h1>
+          <p className='text-main-3 font-bold pb-0.5'>({subject.code})</p>
         </div>
 
         <button
           onClick={() => { deleteSubject(index) }}
-          className='p-1  border-dark-secondary-3 z-10 rounded-tr-lg'>
+          className='p-4 absolute top-0 right-0  border-dark-secondary-3 z-10 rounded-tr-lg'>
           {/* absolute p-2  border-dark-secondary-3 z-10 rounded-tr-lg top-0 right-0 */}
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-[20px] desktop:w-[30px] aspect-square">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-[25px] desktop:w-[35px] aspect-square">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
 
-      <div>{(toggle)?'true':'false'} {subject.notes.length}</div>
-      <div className='text-text-secondary-9 mt-1'>
+      <div className='text-main-1 mt-1'>
         {
           (!toggle && subject.notes.length > 150) &&
           <>
             <span>{subject.notes.slice(0, 150)}</span>
-            <span className='underline relative  font-bold ml-1 group'>
+            <span className='underline  relative  font-bold ml-1 group'>
               <button
                 onClick={() => {
                   if (window.innerWidth < 1024) {
                     setToggle((prev) => !prev)
                   }
                 }}
-                className='cursor-pointer underline lg:hover:cursor-default'>
+                className='cursor-pointer text-dark-secondary-2 underline lg:hover:cursor-default'>
                 Read More
               </button>
-              <div className='absolute  border-2 shadow-lg p-3 hidden group-hover:block top-6 z-50 bg-base-main text-xs'>
+              <div className='absolute  border-2 border-dark-secondary-2 shadow-lg p-3 hidden group-hover:block top-6 z-50 bg-base-main text-xs'>
                 {subject.notes}
               </div>
             </span>
@@ -111,7 +110,7 @@ function Heading({ index, subject, deleteSubject }: {
                     setToggle((prev) => !prev)
                   }
                 }}
-                className='cursor-pointer underline lg:hover:cursor-default'>
+                className='cursor-pointer text-dark-secondary-2 underline lg:hover:cursor-default'>
                 Read Less
               </button>
             </span>
