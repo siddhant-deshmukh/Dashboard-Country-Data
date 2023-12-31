@@ -1,4 +1,4 @@
-import {  useState } from 'react'
+import { useState } from 'react'
 
 import ChangeYearly from './ChangeYearly'
 import ManageCountries from './ManageCountries'
@@ -12,36 +12,53 @@ export function CountryCompSubYearly({ subject, graphWidth: width, deleteSubject
   deleteSubject: (index: number) => void
 }) {
 
+  const [error, setError] = useState<string>("Lorem32")
   const [graphData, setGraphData] = useState<ICountryCompLinearData[]>([])
   const [years, setYears] = useState<{ start: number, end: number }>({ start: 2002, end: 2027 })
   const [minMax, setMinMax] = useState<{ min: number | undefined, max: number | undefined }>({ min: 0, max: undefined })
-  // const [countries, setCountries] = useState<ICountriesInfo[]>([{code: 534, iso: 'IND', name:'India'}])
 
-  //  (subject)
   return (
     <div className='relative px-2 sm:px-5 py-5 rounded-lg border border-light-secondary-3 shadow-xl shadow-light-secondary-0 w-full max-w-[640px] desktop:max-w-[680px]'>
       <div className=''>
+
         <Heading deleteSubject={deleteSubject} subject={subject} index={index} />
 
+        {/* Selecting a country and seeing the list of selected countries */}
         <ManageCountries
           years={years}
           subject={subject}
+          setError={setError}
           minMax={minMax} setMinMax={setMinMax}
           graphData={graphData} setGraphData={setGraphData} />
+
         {/* The graph */}
         {/* startYPoint={minMax.min} endYPoint={minMax.max} */}
-        {
-          graphData.length > 0 &&
-          <div className='border-b'>
-            <div className='pt-5 mx-auto overflow-x-auto' style={{ width: width }}>
+
+        <div className='border-b relative'>
+          <div 
+            style={
+              graphData.length === 0?{ width: width, height: 0.625 * width }:{ width: width} 
+            }
+            className={`pt-5 mx-auto overflow-x-auto ${graphData.length === 0 ? `animate-pulse bg-light-secondary-1` : ''}`} 
+            >
+            {
+              graphData.length > 0 &&
               <LinePlot_Country_Comparisons_Yearly
                 subject={subject}
                 countriesData={graphData} years={years} startYPoint={minMax.min} endYPoint={minMax.max}
                 width={(width < 394) ? 394 : width} />
-            </div>
-            <div className='text-center w-full font-bold py-1 text-main-1'>Years</div>
+            }
+            {/* {
+              error.length > 0 &&
+              <div className='absolute left-0 w-full text-center top-0 bg-red-300 text-red-600' >
+                {error}
+              </div>
+            } */}
+            <div></div>
           </div>
-        }
+          <div className='text-center w-full font-bold py-1 text-main-1'>Years</div>
+        </div>
+
 
         {/* Select Year period */}
       </div>
@@ -86,14 +103,14 @@ function Heading({ index, subject, deleteSubject }: {
             <span className='underline  relative  font-bold ml-1 group'>
               <button
                 onClick={() => {
-                  if (window.innerWidth < 1024) {
-                    setToggle((prev) => !prev)
-                  }
+                  setToggle((prev) => !prev)
+                  // if (window.innerWidth < 1024) {
+                  // }
                 }}
-                className='cursor-pointer text-dark-secondary-2 underline lg:hover:cursor-default'>
+                className='cursor-pointer text-dark-secondary-2 underline hover:cursor-default'>
                 Read More
               </button>
-              <div className='absolute  border-2 border-dark-secondary-2 shadow-lg p-3 hidden group-hover:block top-6 z-50 bg-base-main text-xs'>
+              <div className='absolute  border-2 border-dark-secondary-2 w-80  shadow-lg p-3 hidden group-hover:block top-6 z-50 bg-base-main text-xs'>
                 {subject.notes}
               </div>
             </span>
@@ -106,11 +123,11 @@ function Heading({ index, subject, deleteSubject }: {
             <span className='underline relative  font-bold ml-1 group'>
               <button
                 onClick={() => {
-                  if (window.innerWidth < 1024) {
-                    setToggle((prev) => !prev)
-                  }
+                  setToggle((prev) => !prev)
+                  // if (window.innerWidth < 1024) {
+                  // }
                 }}
-                className='cursor-pointer text-dark-secondary-2 underline lg:hover:cursor-default'>
+                className='cursor-pointer text-dark-secondary-2 underline hover:cursor-default'>
                 Read Less
               </button>
             </span>
@@ -132,9 +149,6 @@ function Heading({ index, subject, deleteSubject }: {
           </div>
         }
       </div>
-
-
-
     </div>
 
   )

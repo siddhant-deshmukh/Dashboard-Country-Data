@@ -18,7 +18,7 @@ export default function ChangeYearly({ years, setYears }: {
         <button
           onClick={() => { setYears((prev) => { return { ...prev, start: (prev.start > 2002) ? prev.start - 1 : prev.start } }) }}
           type="button"
-          className="bg-light-secondary-1 hover:bg-light-secondary-3 border border-secondary-3 rounded-s-lg p-1.5 md:p-3 w-9 aspect-[9/11] focus:ring-secondary-1 focus:ring-2 focus:outline-none">
+          className="bg-light-secondary-1 hover:bg-light-secondary-3 border border-secondary-3 rounded-s-lg p-1.5 md:p-3 w-9 aspect-[9/11]">
           <svg className="w-2.5 md:w-3 aspect-square text-main" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" d="M1 1h16" />
           </svg>
@@ -34,7 +34,7 @@ export default function ChangeYearly({ years, setYears }: {
           onClick={() => { setYears((prev) => { return { ...prev, start: (prev.start < 2027) ? prev.start + 1 : prev.start } }) }}
           type="button"
           id="increment-button"
-          className="bg-light-secondary-1 hover:bg-light-secondary-3 border border-secondary-3 rounded-e-lg p-1.5 md:p-3 w-9 aspect-[9/11] focus:ring-secondary-1 focus:ring-2 focus:outline-none">
+          className="bg-light-secondary-1 hover:bg-light-secondary-3 border border-secondary-3 rounded-e-lg p-1.5 md:p-3 w-9 aspect-[9/11]">
           <svg className="w-2.5 md:w-3 aspect-square text-main" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" d="M9 1v16M1 9h16" />
           </svg>
@@ -44,7 +44,7 @@ export default function ChangeYearly({ years, setYears }: {
         <button
           onClick={() => { setYears((prev) => { return { ...prev, end: (prev.end > 2003) ? prev.end - 1 : prev.end } }) }}
           type="button"
-          className="bg-light-secondary-1 hover:bg-light-secondary-3 border border-secondary-3 rounded-s-lg p-1.5 md:p-3 w-9 aspect-[9/11] focus:ring-secondary-1 focus:ring-2 focus:outline-none">
+          className="bg-light-secondary-1 hover:bg-light-secondary-3 border border-secondary-3 rounded-s-lg p-1.5 md:p-3 w-9 aspect-[9/11]">
           <svg className="w-2.5 md:w-3 aspect-square text-main" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" d="M1 1h16" />
           </svg>
@@ -55,11 +55,11 @@ export default function ChangeYearly({ years, setYears }: {
             const val = parseInt(event.target.value)
             setYears((prev) => { return { ...prev, end: (val > 2002 && val < 2028) ? val : prev.end } })
           }}
-          type="text" className="bg-light-secondary-0 border-x-0 border-secondary-4 h-[32.75px] md:h-11 text-center text-main text-sm focus:ring-secondary-5 focus:border-secondary-5 block w-full py-2.5" placeholder="2015" required />
+          type="text" className="bg-light-secondary-0  outline-none border-x-0 border-secondary-4 h-[32.75px] md:h-11 text-center text-main text-sm focus:ring-secondary-5 focus:border-secondary-5 block w-full py-2.5" placeholder="2015" required />
         <button
           onClick={() => { setYears((prev) => { return { ...prev, end: (prev.end < 2027) ? prev.end + 1 : prev.end } }) }}
           type="button"
-          className="bg-light-secondary-1 hover:bg-light-secondary-3 border border-secondary-3 rounded-e-lg p-1.5 md:p-3 w-9 aspect-[9/11] focus:ring-secondary-1 focus:ring-2 focus:outline-none">
+          className="bg-light-secondary-1 outline-none hover:bg-light-secondary-3 border border-secondary-3 rounded-e-lg p-1.5 md:p-3 w-9 aspect-[9/11]">
           <svg className="w-2.5 md:w-3 aspect-square text-main" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" d="M9 1v16M1 9h16" />
           </svg>

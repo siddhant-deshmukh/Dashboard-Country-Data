@@ -1,12 +1,11 @@
 import { useCallback, useContext, useEffect, useState } from 'react'
 
-import { SelectSubject } from '../SelectField/SelectSubjectCode'
 import { ISubjectsInfo } from '../../types'
 import { AppContext } from '../../context/AppContext'
 import { CountryCompSubYearly } from './CountryCompSubYearly'
+import { SelectSubject } from '../SelectField/SelectSubjectCode'
 
 const DefaultSubjectsCodeList: string[] = ["NGDP", "NGSD_NGDP", "NGDPDPC"]
-
 
 export default function CountryCompSubYearlyList() {
 
@@ -14,8 +13,8 @@ export default function CountryCompSubYearlyList() {
   const AllSubjects = fieldsState?.subjects
 
   const [graphWidth, setWidth] = useState(640)
-  const [selected, setSelected] = useState<ISubjectsInfo | null>(null)
   const [subjects, setSubjects] = useState<ISubjectsInfo[]>([])
+  const [selected, setSelected] = useState<ISubjectsInfo | null>(null)
 
   function addSubject(selected: ISubjectsInfo | null) {
     if (selected) {
@@ -37,6 +36,7 @@ export default function CountryCompSubYearlyList() {
     }
   }, [setSubjects])
 
+  // Just to set Default subjects
   useEffect(() => {
     if (AllSubjects) {
       const DefaultSubjects = AllSubjects?.filter((subject_info) => {
@@ -45,15 +45,11 @@ export default function CountryCompSubYearlyList() {
       setSubjects(DefaultSubjects)
     }
   }, [AllSubjects])
-
+  // Will adjust the width of the graph
   useEffect(() => {
     function FunListner() {
-      // console.log('resize')
-      // const window =  Window //screen as Screen
-
       const window_width = window.innerWidth
-      // console.log("resize", window_width, window)
-
+      
       if (window_width < 640) {
         setWidth(window_width - 70)
       } else if (window_width < 770) {
@@ -69,7 +65,6 @@ export default function CountryCompSubYearlyList() {
       } else {
         setWidth(640)
       }
-      // console.log()
     }
 
     FunListner()
@@ -80,7 +75,6 @@ export default function CountryCompSubYearlyList() {
     }
   }, [setWidth])
 
-  // console.log("Selected", selected)
   return (
     <div className='flex flex-col my-2'>
       <div className='flex px-0 sm:px-1 flex-col my-3'>
@@ -107,7 +101,7 @@ export default function CountryCompSubYearlyList() {
           </button>
         </div>
       </div>
-      <ul className='grid grid-cols-1 lg:grid-cols-2 laptop:grid-cols-2 gap-5 w-full'>
+      <ul className='grid grid-cols-1 lg:grid-cols-2 laptop:grid-cols-2 gap-x-5 gap-y-10 w-full'>
         {
           subjects.map((subject, index) => {
             return <div
