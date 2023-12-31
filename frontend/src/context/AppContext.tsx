@@ -4,6 +4,8 @@ import { ApolloError, gql, useQuery } from "@apollo/client"
 import { SwitchTheme } from "../Themes"
 
 export const AppContext = React.createContext<{
+  gErrors: string[]
+  setGErrors: React.Dispatch<React.SetStateAction<string[]>>
   changeTheme: () => void
   colorTheme: TColorThemeOptions
   fieldsState: IFieldsState | undefined
@@ -12,6 +14,8 @@ export const AppContext = React.createContext<{
     error: ApolloError | undefined
   }
 }>({
+  gErrors: [],
+  setGErrors: () => {},
   changeTheme: () => {},
   colorTheme: "grey",
   fieldsState: {
@@ -25,15 +29,14 @@ export const AppContext = React.createContext<{
 })
 
 export const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
-
-  // const [ fieldsState, setFeildsState ] = useState<IFieldsState>({countries: undefined, subjects: undefined})
+  
+  const [gErrors, setGErrors] = useState<string[]>([])
   const [colorTheme, setColorTheme] = useState<TColorThemeOptions>('grey')
 
   const { loading, error, data: fieldsState } = useQuery<IFieldsState>(GET_COUNTRIES_SUBJECTS, {
     fetchPolicy: 'cache-first'
   });
-  // console.log(fieldsState)
-
+  
   const changeTheme = useCallback(() => {
     setColorTheme((prev) => {
       if (prev === "grey") return "dark-blue"
@@ -47,7 +50,7 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
   }, [colorTheme])
 
   return (
-    <AppContext.Provider value={{ colorTheme, fieldsState, fields: { loading, error }, changeTheme }}>
+    <AppContext.Provider value={{ colorTheme, gErrors, setGErrors, fieldsState, fields: { loading, error }, changeTheme }}>
       {children}
     </AppContext.Provider>
   )

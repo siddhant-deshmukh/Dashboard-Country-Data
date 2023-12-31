@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { ICountriesInfo, ICountryCompLinearData, ISubjectsInfo } from '../../types';
 import { SelectCountry } from '../SelectField/SelectCountry';
 import { GetCountrySubData } from './Utils';
 import { useApolloClient } from '@apollo/client';
+import { AppContext } from '../../context/AppContext';
 
 const DefaultCountries: ICountriesInfo[] = [
   {
@@ -22,8 +23,16 @@ const DefaultCountries: ICountriesInfo[] = [
   },
 ]
 
-export default function ManageCountries({ subject, years, graphData, setGraphData, minMax, setMinMax }: {
+export default function ManageCountries({
+  years,
+  subject,
+  minMax,
+  setMinMax,
+  graphData,
+  setGraphData,
+}: {
   graphData: ICountryCompLinearData[],
+  setError: React.Dispatch<React.SetStateAction<string>>
   setGraphData: React.Dispatch<React.SetStateAction<ICountryCompLinearData[]>>,
   years: {
     start: number;
@@ -40,6 +49,9 @@ export default function ManageCountries({ subject, years, graphData, setGraphDat
   subject: ISubjectsInfo
 }) {
 
+  const [loading, setLoading] = useState(false)
+  const { setGErrors } = useContext(AppContext)
+
   const client = useApolloClient()
   const initialized = useRef(false)
   const [selectedCountry, setSelectedCountry] = useState<ICountriesInfo | null>(null)
@@ -48,43 +60,37 @@ export default function ManageCountries({ subject, years, graphData, setGraphDat
   useEffect(() => {
     if (!initialized.current) {
       initialized.current = true
-      if (DefaultCountries.length > 0) {
-        addNewCountryData(DefaultCountries[0])
-          .finally(() => {
-            if (DefaultCountries.length > 1) {
-              addNewCountryData(DefaultCountries[1])
-                .finally(() => {
-                  if (DefaultCountries.length > 2) {
-                    addNewCountryData(DefaultCountries[2])
-                  }
-                })
-            }
-          })
-      }
-    }
-  }, [])
-
-  useEffect(() => {
-    if (years.start < years.end) {
-      const promiseArr = graphData.map(({ country, color }) => {
-        return GetCountrySubData(client, country, subject.code, years.start, years.end, color)
+      const PromiseArr = DefaultCountries.map(async (country) => {
+        addNewCountryData(country)
       })
-      Promise.all(promiseArr).then((data) => {
-        // console.log("After change!", data)
 
-        const temp_data: ICountryCompLinearData[] = []
-        data.forEach((d) => {
-          if (d) {
-            temp_data.push(d)
-          }
-        })
-        setGraphData(temp_data)
+      Promise.all(PromiseArr).finally(() => {
+        setLoading(false)
       })
     }
-  }, [years])
+  }, [setLoading])
+
+  // useEffect(() => {
+  //   if (years.start < years.end) {
+  //     const promiseArr = graphData.map(({ country, color }) => {
+  //       return GetCountrySubData(client, country, subject.code, years.start, years.end, color)
+  //     })
+  //     Promise.all(promiseArr).then((data) => {
+  //       // console.log("After change!", data)
+
+  //       const temp_data: ICountryCompLinearData[] = []
+  //       data.forEach((d) => {
+  //         if (d) {
+  //           temp_data.push(d)
+  //         }
+  //       })
+  //       setGraphData(temp_data)
+  //     })
+  //   }
+  // }, [years])
 
   const addNewCountryData = useCallback(async (country: ICountriesInfo) => {
-    const data = await GetCountrySubData(client, country, subject.code, years.start, years.end)
+    const data = await GetCountrySubData(client, country, subject.code, 2002, 2027, "", setGErrors)
     data?.data.forEach((value) => {
 
       setMinMax((prev) => {
@@ -119,9 +125,6 @@ export default function ManageCountries({ subject, years, graphData, setGraphDat
           break;
         }
       }
-      // if () {
-      //   return arr.slice(1)
-      // }
 
       const finalData = (index === 0) ?
         arr.slice(1) :
@@ -158,8 +161,6 @@ export default function ManageCountries({ subject, years, graphData, setGraphDat
 
 
   }, [setGraphData, setMinMax])
-
-  // console.log('graphData', graphData)
 
   return (
     <div className='text-xs md:text-sm'>
