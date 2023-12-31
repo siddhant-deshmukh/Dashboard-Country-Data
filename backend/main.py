@@ -8,11 +8,18 @@ from api.Models.db import db
 from api.Schema.schema import schema
 from strawberry.flask.views import GraphQLView
 
+load_dotenv("../.env")
+
 app = Flask(__name__)
 
-CORS(app, origins="*")
 
-load_dotenv("../.env")
+client_1 = environ.get("ALLOWED_ORIGIN_CLIENT_1")
+client_2 = environ.get("ALLOWED_ORIGIN_CLIENT_2")
+client_3 = environ.get("ALLOWED_ORIGIN_CLIENT_3")
+client_4 = environ.get("ALLOWED_ORIGIN_CLIENT_4")
+
+CORS(app, origins=[client_1, client_2, client_3, client_4])
+
 
 postgresql_url = environ.get("POSTGRES_CONNECT_URL")
 if postgresql_url is None:
