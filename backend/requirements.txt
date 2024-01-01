@@ -5,3 +5,4 @@ sqlalchemy==2.0.16
 python_dotenv==1.0.0
 strawberry-graphql[debug-server]==0.217.0
 psycopg2==2.9.9
+gunicorn==21.2.0
