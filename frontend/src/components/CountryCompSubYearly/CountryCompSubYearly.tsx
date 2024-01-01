@@ -18,7 +18,7 @@ export function CountryCompSubYearly({ subject, graphWidth: width, deleteSubject
   const [minMax, setMinMax] = useState<{ min: number | undefined, max: number | undefined }>({ min: 0, max: undefined })
 
   return (
-    <div className='relative px-2 sm:px-5 py-5 rounded-lg border border-light-secondary-3 shadow-xl shadow-light-secondary-0 w-full max-w-[640px] desktop:max-w-[680px]'>
+    <div className='relative px-2 sm:px-5 py-5 rounded-lg border border-light-secondary-3 shadow-md bg-light-secondary-1 shadow-[var(--light-secondary-2)] w-full max-w-[640px] desktop:max-w-[680px]'>
       <div className=''>
 
         <Heading deleteSubject={deleteSubject} subject={subject} index={index} />
@@ -135,7 +135,7 @@ function Heading({ index, subject, deleteSubject }: {
         }
       </div>
 
-      <div className='flex justify-end my-2.5 space-x-2 desktop:my-4 text-xs desktop:text-base'>
+      <div className='flex flex-wrap-reverse justify-end my-2.5 space-x-2 desktop:my-4 text-xs desktop:text-base'>
         {/* flex-col-reverse sm:flex-row space-y-2 sm:space-y-0 items-end space-x-0 sm:space-x-2  */}
         <div className='flex border border-light-secondary-3 rounded-md overflow-hidden'>
           <p className='py-1.5 desktop:py-2 px-2.5 desktop:px-3 bg-light-secondary-2 font-semibold text-main'>Unit : </p>

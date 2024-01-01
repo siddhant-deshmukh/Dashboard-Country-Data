@@ -60,7 +60,7 @@ export default function LinePlot_Country_Comparisons_Yearly({
     }
   }, [gy, y, width, height]);
 
-  console.log(years, subject.name, countriesData.slice(years.start - 2002, years.end - 2002))
+  // console.log(years, subject.name, countriesData.slice(years.start - 2002, years.end - 2002))
 
   return (
     <>
