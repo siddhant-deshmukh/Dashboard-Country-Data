@@ -1,14 +1,19 @@
 # Dashboard App (Still in progress)
 
-Goal is to create a dashboard which will show  
+Goal is to create a dashboard which will   
 
 ## Views
 
-![laptop size light blue theme]('./README_imgs/xl-light-blue.png')
-![desktop size dark theme]('./README_imgs/2xl-dark.png')
-![tablet size light blue theme]('./README_imgs/md-grey.png')
-![phone size light blue theme]('./README_imgs/sm-light-blue.png')
-![phone size grey theme]('./README_imgs/sm-grey.png')
+* laptop size light blue theme
+![laptop size light blue theme](README_imgs/xl-light-blue.png)
+* desktop size dark theme
+![desktop size dark theme](README_imgs/2xl-dark.png)
+* tablet size light blue theme
+![tablet size light blue theme](README_imgs/md-grey.png)
+* phone size light blue theme
+![phone size light blue theme](README_imgs/sm-light-blue.png)
+* phone size grey theme
+![phone size grey theme](README_imgs/sm-grey.png)
 
 
 ## To setup backend
