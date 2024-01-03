@@ -42,7 +42,7 @@ export default function CountryCompSubYearlyList() {
       const DefaultSubjects = AllSubjects?.filter((subject_info) => {
         return DefaultSubjectsCodeList.indexOf(subject_info.code) != -1
       })
-      console.log(DefaultSubjectsCodeList, DefaultSubjects)
+      // console.log(DefaultSubjectsCodeList, DefaultSubjects)
       setSubjects(DefaultSubjects)
     }
   }, [AllSubjects])
@@ -84,6 +84,10 @@ export default function CountryCompSubYearlyList() {
           <h4 className='font-semibold text-sm sm:text-base laptop:text-lg text-main-secondary-1 my-1.5'>Here you can compare yearly data of different countries in plot manner.</h4>
           <ul className='list-disc pl-5 text-sm laptop:text-base text-main-secondary-2 my-3'>
             <li>
+              Original Version:
+              <a className='font-bold underline text-dark-secondary-1 ml-1' href='https://github.com/siddhant-deshmukh/Dashboard-Country-Data' target='_blank'>Github Repo</a>
+            </li>
+            <li>
               This is the demo / deployed version of the app.
             </li>
             <li>
@@ -91,10 +95,6 @@ export default function CountryCompSubYearlyList() {
               <span className='font-medium ml-0.5'>GraphQL</span>,
               <span className='font-medium ml-0.5'>Flask (Python)</span>,
               <span className='font-medium ml-0.5'>PostgreSQL</span>.
-            </li>
-            <li>
-              Original Version:
-              <a className='font-bold underline text-dark-secondary-1 ml-1' href='https://github.com/siddhant-deshmukh/Dashboard-Country-Data' target='_blank'>Github Repo</a>
             </li>
           </ul>
         </div>

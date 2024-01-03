@@ -88,8 +88,8 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
 
   const [gErrors, setGErrors] = useState<string[]>([])
   const [colorTheme, setColorTheme] = useState<TColorThemeOptions>('grey')
-  const [fieldsState, setFieldsState] = useState<IFieldsState>(DefaultFieldsState)
-  const { loading, error, data: fieldsData } = useQuery<IFieldsState>(GET_COUNTRIES_SUBJECTS, {
+  // const [fieldsState, setFieldsState] = useState<IFieldsState>(DefaultFieldsState)
+  const { loading, error, } = useQuery<IFieldsState>(GET_COUNTRIES_SUBJECTS, { //data: fieldsData
     fetchPolicy: 'cache-first'
   });
 
@@ -114,7 +114,14 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
   }, [colorTheme])
 
   return (
-    <AppContext.Provider value={{ colorTheme, gErrors, setGErrors, fieldsState, fields: { loading, error }, changeTheme }}>
+    <AppContext.Provider value={{
+      colorTheme,
+      changeTheme,
+      gErrors,
+      setGErrors,
+      fields: { loading, error },
+      fieldsState: DefaultFieldsState,
+    }}>
       {children}
     </AppContext.Provider>
   )

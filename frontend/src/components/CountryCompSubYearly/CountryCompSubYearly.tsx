@@ -12,7 +12,7 @@ export function CountryCompSubYearly({ subject, graphWidth: width, deleteSubject
   deleteSubject: (index: number) => void
 }) {
 
-  const [error, setError] = useState<string>("Lorem32")
+  // const [error, setError] = useState<string>("Lorem32")
   const [graphData, setGraphData] = useState<ICountryCompLinearData[]>([])
   const [years, setYears] = useState<{ start: number, end: number }>({ start: 2002, end: 2027 })
   const [minMax, setMinMax] = useState<{ min: number | undefined, max: number | undefined }>({ min: 0, max: undefined })
@@ -27,9 +27,8 @@ export function CountryCompSubYearly({ subject, graphWidth: width, deleteSubject
 
         {/* Selecting a country and seeing the list of selected countries */}
         <ManageCountries
-          years={years}
           subject={subject}
-          setError={setError}
+          // setError={setError}
           minMax={minMax} setMinMax={setMinMax}
           graphData={graphData} setGraphData={setGraphData} />
 

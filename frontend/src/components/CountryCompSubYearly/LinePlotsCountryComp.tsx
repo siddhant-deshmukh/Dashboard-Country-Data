@@ -3,7 +3,6 @@ import { useRef, useEffect } from "react";
 import { ICountryCompLinearData, ISubjectsInfo } from "../../types";
 
 export default function LinePlot_Country_Comparisons_Yearly({
-  subject,
   countriesData,
   years,
   width = 640,

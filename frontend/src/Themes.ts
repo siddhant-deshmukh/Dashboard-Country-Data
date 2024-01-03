@@ -1,21 +1,21 @@
 import { TColorThemeOptions } from "./types"
 
-const variables = [
-  "base-main",
-  "main",
-  "main-1",
-  "main-2",
-  "main-3",
-  "main-4",
-  "light-secondary-0",
-  "light-secondary-1",
-  "light-secondary-2",
-  "light-secondary-3",
-  "dark-secondary-0",
-  "dark-secondary-1",
-  "dark-secondary-2",
-  "dark-secondary-3"
-]
+// const variables = [
+//   "base-main",
+//   "main",
+//   "main-1",
+//   "main-2",
+//   "main-3",
+//   "main-4",
+//   "light-secondary-0",
+//   "light-secondary-1",
+//   "light-secondary-2",
+//   "light-secondary-3",
+//   "dark-secondary-0",
+//   "dark-secondary-1",
+//   "dark-secondary-2",
+//   "dark-secondary-3"
+// ]
 
 export const color_themes: {
   [key in TColorThemeOptions]: {

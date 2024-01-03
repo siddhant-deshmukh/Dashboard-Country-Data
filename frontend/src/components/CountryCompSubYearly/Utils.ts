@@ -1,6 +1,5 @@
-import { ApolloClient, ApolloError, gql } from "@apollo/client"
-import { ICountriesInfo, ICountryCompLinearData, ICountrySubjectData, IDefaultSubjectCode } from "../../types"
-import { GraphQLError } from "graphql"
+import { ApolloClient, gql } from "@apollo/client"
+import { ICountriesInfo, ICountryCompLinearData, IDefaultSubjectCode } from "../../types"
 
 export async function GetCountrySubData(
   client: ApolloClient<object>,

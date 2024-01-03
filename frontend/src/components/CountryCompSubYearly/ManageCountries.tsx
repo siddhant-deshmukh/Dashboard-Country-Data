@@ -24,7 +24,6 @@ const DefaultCountries: ICountriesInfo[] = [
 ]
 
 export default function ManageCountries({
-  years,
   subject,
   minMax,
   setMinMax,
@@ -32,12 +31,8 @@ export default function ManageCountries({
   setGraphData,
 }: {
   graphData: ICountryCompLinearData[],
-  setError: React.Dispatch<React.SetStateAction<string>>
+  // setError: React.Dispatch<React.SetStateAction<string>>
   setGraphData: React.Dispatch<React.SetStateAction<ICountryCompLinearData[]>>,
-  years: {
-    start: number;
-    end: number;
-  },
   minMax: {
     min: number | undefined;
     max: number | undefined;
@@ -49,7 +44,7 @@ export default function ManageCountries({
   subject: ISubjectsInfo
 }) {
 
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   const { setGErrors } = useContext(AppContext)
 
   const client = useApolloClient()
@@ -65,10 +60,10 @@ export default function ManageCountries({
       })
 
       Promise.all(PromiseArr).finally(() => {
-        setLoading(false)
+        // setLoading(false)
       })
     }
-  }, [setLoading])
+  }, []) //setLoading
 
   // useEffect(() => {
   //   if (years.start < years.end) {
@@ -112,7 +107,7 @@ export default function ManageCountries({
     setMinMax((prev) => {
       let final = { ...prev }
       if (limits.min && (!final.min || final.min > limits.min)) {
-        if (!limits.min || limits.min > 0) limits.min = 0;
+        // if (!limits.min || limits.min > 0) limits.min = 0;
 
         final = { ...final, min: limits.min }
       }
@@ -172,7 +167,7 @@ export default function ManageCountries({
         colors.current.push(color_)
       }
 
-      if (!min || min > 0) min = 0;
+      // if (!min || min > 0) min = 0;
 
       setMinMax({ min, max })
       return finalData
