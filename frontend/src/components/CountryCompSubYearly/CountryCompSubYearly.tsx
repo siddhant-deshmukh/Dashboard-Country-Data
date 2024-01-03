@@ -17,6 +17,8 @@ export function CountryCompSubYearly({ subject, graphWidth: width, deleteSubject
   const [years, setYears] = useState<{ start: number, end: number }>({ start: 2002, end: 2027 })
   const [minMax, setMinMax] = useState<{ min: number | undefined, max: number | undefined }>({ min: 0, max: undefined })
 
+  console.log("graphData", subject.name, graphData)
+  
   return (
     <div className='relative px-2 sm:px-5 py-5 rounded-lg border border-light-secondary-3 shadow-md bg-light-secondary-1 shadow-[var(--light-secondary-2)] w-full max-w-[640px] desktop:max-w-[680px]'>
       <div className=''>

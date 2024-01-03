@@ -5,7 +5,7 @@ import { AppContext } from '../../context/AppContext'
 import { CountryCompSubYearly } from './CountryCompSubYearly'
 import { SelectSubject } from '../SelectField/SelectSubjectCode'
 
-const DefaultSubjectsCodeList: string[] = ["NGDP", "NGSD_NGDP", "NGDPDPC"]
+const DefaultSubjectsCodeList: string[] = ["NGDP", "NGSD_NGDP", "NGDPDPC"] //"NGSD_NGDP", "NGDPDPC"
 
 export default function CountryCompSubYearlyList() {
 
@@ -42,6 +42,7 @@ export default function CountryCompSubYearlyList() {
       const DefaultSubjects = AllSubjects?.filter((subject_info) => {
         return DefaultSubjectsCodeList.indexOf(subject_info.code) != -1
       })
+      console.log(DefaultSubjectsCodeList, DefaultSubjects)
       setSubjects(DefaultSubjects)
     }
   }, [AllSubjects])
@@ -49,7 +50,7 @@ export default function CountryCompSubYearlyList() {
   useEffect(() => {
     function FunListner() {
       const window_width = window.innerWidth
-      
+
       if (window_width < 640) {
         setWidth(window_width - 70)
       } else if (window_width < 770) {

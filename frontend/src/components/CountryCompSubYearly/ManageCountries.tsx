@@ -55,7 +55,7 @@ export default function ManageCountries({
   const client = useApolloClient()
   const initialized = useRef(false)
   const [selectedCountry, setSelectedCountry] = useState<ICountriesInfo | null>(null)
-  const colors = useRef<string[]>(["grey", "red", "yellow", "orange", "green", "#FFAA33", "#DB00F0", "#01F50D", "#fcba03", "#004EE0", "#E61F00"])
+  const colors = useRef<string[]>(["#000000", "#FF0000", "#FFFF00", "#fc7f03", "#00FFFF", "#FFAA33", "#DB00F0", "#01F50D", "#fcba03", "#004EE0", "#E61F00"])
 
   useEffect(() => {
     if (!initialized.current) {
@@ -91,20 +91,29 @@ export default function ManageCountries({
 
   const addNewCountryData = useCallback(async (country: ICountriesInfo) => {
     const data = await GetCountrySubData(client, country, subject.code, 2002, 2027, "", setGErrors)
+    const limits: { min?: number, max?: number } = { min: 0, max: undefined }
+
     data?.data.forEach((value) => {
-
-      setMinMax((prev) => {
-        let final = { ...prev }
-
-        if (!final.min || final.min > value) {
-          final = { ...final, min: value }
-        }
-        if (!final.max || final.max < value) {
-          final = { ...final, max: value }
-        }
-        return final
-      })
+      if(!limits.min || limits.min > value){
+        limits.min = value
+      } 
+      if(!limits.max || limits.max < value){
+        limits.max = value
+      }
     })
+    setMinMax((prev) => {
+      let final = { ...prev }
+      if (limits.min && (!final.min || final.min > limits.min)) {
+        if (!limits.min || limits.min > 0) limits.min = 0;
+
+        final = { ...final, min: limits.min }
+      }
+      if (limits.max && (!final.max || final.max < limits.max)) {
+        final = { ...final, max: limits.max }
+      }
+      return final
+    })
+    
     if (data) {
       let color = colors.current.pop()
       data.color = (color) ? color : "black"
@@ -154,6 +163,8 @@ export default function ManageCountries({
       if (color_) {
         colors.current.push(color_)
       }
+
+      if (!min || min > 0) min = 0;
 
       setMinMax({ min, max })
       return finalData
