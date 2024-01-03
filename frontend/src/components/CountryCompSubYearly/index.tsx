@@ -82,11 +82,21 @@ export default function CountryCompSubYearlyList() {
         <h2 className='font-bold text-2xl sm:text-3xl laptop:text-4xl text-main-secondary-0'>Country's Yearly Comparison</h2>
         <div className='px-0 sm:px-1'>
           <h4 className='font-semibold text-sm sm:text-base laptop:text-lg text-main-secondary-1 my-1.5'>Here you can compare yearly data of different countries in plot manner.</h4>
-          <p className='text-sm laptop:text-base text-main-secondary-2 my-3'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt vero vitae molestias? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe molestiae natus ad tempore amet! Natus laboriosam numquam esse nisi voluptas!
-            <br /><br />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptate beatae doloremque. Lorem ipsum dolor sit amet consectetur adipisicing.
-          </p>
+          <ul className='list-disc pl-5 text-sm laptop:text-base text-main-secondary-2 my-3'>
+            <li>
+              This is the demo / deployed version of the app.
+            </li>
+            <li>
+              Original have backend made with
+              <span className='font-medium ml-0.5'>GraphQL</span>,
+              <span className='font-medium ml-0.5'>Flask (Python)</span>,
+              <span className='font-medium ml-0.5'>PostgreSQL</span>.
+            </li>
+            <li>
+              Original Version:
+              <a className='font-bold underline text-dark-secondary-1 ml-1' href='https://github.com/siddhant-deshmukh/Dashboard-Country-Data' target='_blank'>Github Repo</a>
+            </li>
+          </ul>
         </div>
       </div>
       <div className='px-0 sm:px-1 flex flex-col justify-start space-y-2 items-start pt-2 pb-5'>

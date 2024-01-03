@@ -40,3 +40,5 @@ export type ICountryCompLinearData = {
   color?: string,
   data: number[]
 }
+
+export type IDefaultSubjectCode = "NGDP" | "NGDPDPC" | "NGSD_NGDP" | "GGX"

@@ -19,10 +19,10 @@ function App() {
   useEffect(() => {
     if (AppFieldsLoadingError) {
       console.error("While loading the fields(All countries and subjects data)", AppFieldsLoadingError)
-      setGErrors((prev) => {
-        const arr = prev.slice()
-        return ['Error occured while getting the fields data, refresh the page or try again later.'].concat(arr)
-      })
+      // setGErrors((prev) => {
+      //   const arr = prev.slice()
+      //   return ['Error occured while getting the fields data, refresh the page or try again later.'].concat(arr)
+      // })
     }
   }, [AppFieldsLoadingError])
 
@@ -35,18 +35,18 @@ function App() {
             {
               gErrors.map((error, index) => {
                 return (
-                  <div className="flex  items-center p-4 mt-4 border border-red-300 w-full text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                  <div key={Math.round(Math.random() * 100)} className="flex  items-center p-4 mt-4 border border-red-300 w-full text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                     <div className="ms-3 text-sm font-medium">
                       {error}
                     </div>
                     <button
                       onClick={() => {
-                        setGErrors((prev => {
-                          if (index === 0) {
-                            return prev.slice(1)
-                          }
-                          return prev.slice(0, index).concat(prev.slice(index + 1))
-                        }))
+                        // setGErrors((prev => {
+                        //   if (index === 0) {
+                        //     return prev.slice(1)
+                        //   }
+                        //   return prev.slice(0, index).concat(prev.slice(index + 1))
+                        // }))
                       }}
                       type="button" className="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-2" aria-label="Close">
                       <span className="sr-only">Close</span>

@@ -90,6 +90,14 @@ export default function ManageCountries({
   // }, [years])
 
   const addNewCountryData = useCallback(async (country: ICountriesInfo) => {
+    if(country){
+      const ifExist = graphData.find(( cData )=>{
+        return cData.country.code === country.code
+      })
+      if(ifExist){
+        return
+      }
+    }
     const data = await GetCountrySubData(client, country, subject.code, 2002, 2027, "", setGErrors)
     const limits: { min?: number, max?: number } = { min: 0, max: undefined }
 
@@ -194,9 +202,9 @@ export default function ManageCountries({
               }}>
                 <p >{country.name}</p>
               </button>
-              <div className='group-hover:block hidden absolute text-xs bg-base-main text-main font-bold font-mono top-10 border shadow-lg px-2 py-1 '>
+              {/* <div className='group-hover:block hidden absolute text-xs bg-base-main text-main font-bold font-mono top-10 border shadow-lg px-2 py-1 '>
                 Remove
-              </div>
+              </div> */}
             </span>
           })
         }
